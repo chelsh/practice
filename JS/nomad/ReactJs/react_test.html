@@ -1,0 +1,26 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+let Hi = () => {
+    return <h1>Hi Ryu!</h1>
+};
+
+ReactDOM.render(
+    <Hi/>,
+    document.getElementById("root")
+);
+
+
+
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    const Container = () => (
+      <div>
+        <h3>Total clicks: 0</h3>
+        <button>Click me</button>
+      </div>
+    );
+    ReactDOM.render(<Container />, root);
