@@ -1,4 +1,4 @@
-import mya_incoder
+import mya_encoder
 import mya_decoder
 
 import sys
@@ -15,7 +15,7 @@ print("[Result]")
 if flag:
     print(mya_decoder.myaDecoder(text))
 else:
-    print(mya_incoder.myaIncoder(text))
+    print(mya_encoder.myaEncoder(text))
 
 
 
@@ -24,7 +24,7 @@ else:
 # reg = re.compile(r'[a-zA-Z]')
 
 # if reg.match(text):
-#     print(mya_incoder.myaIncoder(text))
+#     print(mya_encoder.myaEncoder(text))
 # else:
 #     print(mya_decoder.myaDecoder(text))
 

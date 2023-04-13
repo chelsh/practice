@@ -1,12 +1,12 @@
 #ENG -> MYA
 
-def myaIncoder(text):
+def myaEncoder(text):
     L = []
 
     for i in range(len(text)):
         L.append(ord(text[i]))
 
-    incodedList = []
+    encodedList = []
     for i in range(len(L)):
         quatre = 0
         for j in range(3, -1, -1):
@@ -28,6 +28,6 @@ def myaIncoder(text):
                 myaStr += "먐"
         
        
-        incodedList.append(myaStr)
-    return ''.join(incodedList)
+        encodedList.append(myaStr)
+    return ''.join(encodedList)
 
