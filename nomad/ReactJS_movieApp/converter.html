@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function MinutesToHours() {
+      const [amount, setAmount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
+
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      const reset = () => {
+        setAmount(0);
+      };
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current);
+      };
+
+      return (
+        <div>
+          <h3>Minutes/Hours (practice)</h3>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+            <input
+              value={inverted ? amount * 60 : amount}
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange}
+              disabled={inverted}
+            />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input
+              value={inverted ? amount : Math.round(amount / 60)}
+              id="hours"
+              placeholder="Miles"
+              type="number"
+              onChange={onChange}
+              disabled={!inverted}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onInvert}>Invert</button>
+        </div>
+      );
+    }
+
+    function Time() {
+      const [amount, setAmount] = React.useState(0);
+      const [option, setOption] = React.useState(0);
+
+      let second = amount;
+      if (option === 0) {
+        second = amount * 3600;
+      } else if (option === 1) {
+        second = amount * 60;
+      }
+      const hour = second / 3600;
+      const minute = second / 60;
+
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      const reset = () => {
+        setAmount(0);
+      };
+      const onSwitch = () => {
+        if (option === 2) {
+          setOption((current) => 0);
+        } else {
+          setOption((current) => current + 1);
+        }
+      };
+
+      return (
+        <div>
+          <h3>Time Converter</h3>
+          <div>
+            <label htmlFor="hours">Hour</label>
+            <input
+              value={hour}
+              id="hours"
+              placeholder="Hours"
+              type="number"
+              onChange={onChange}
+              disabled={option !== 0}
+            />
+          </div>
+          <div>
+            <label htmlFor="minutes">Minute</label>
+            <input
+              value={minute}
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange}
+              disabled={option !== 1}
+            />
+          </div>
+          <div>
+            <label htmlFor="seconds">Second</label>
+            <input
+              value={second}
+              id="seconds"
+              placeholder="Seconds"
+              type="number"
+              onChange={onChange}
+              disabled={option !== 2}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onSwitch}>Switch</button>
+        </div>
+      );
+    }
+
+    function Distance() {
+      const [amount, setAmount] = React.useState(0);
+      const [option, setOption] = React.useState(0);
+
+      let cm = amount;
+      if (option === 1) {
+        cm = amount * 100;
+      } else if (option === 2) {
+        cm = amount * 100000;
+      } else if (option === 3) {
+        cm = amount * 2.54;
+      } else if (option === 4) {
+        cm = amount * 30.48;
+      } else if (option === 5) {
+        cm = amount * 91.44;
+      } else if (option === 6) {
+        cm = amount * 160934.4;
+      }
+      const m = cm / 100;
+      const km = cm / 100000;
+      const inch = Math.round((cm / 2.54) * 1000000) / 1000000;
+      const ft = Math.round((cm / 30.48) * 1000000) / 1000000;
+      const yd = Math.round((cm / 91.44) * 1000000) / 1000000;
+      const mile = Math.round((cm / 160934.4) * 1000000) / 1000000;
+
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      };
+      const reset = () => {
+        setAmount(0);
+      };
+      const onSwitch = () => {
+        if (option === 6) {
+          setOption((current) => 0);
+        } else {
+          setOption((current) => current + 1);
+        }
+      };
+
+      return (
+        <div>
+          <h3>Distance Converter</h3>
+          <div>
+            <label htmlFor="centimeters">Centimeter</label>
+            <input
+              value={cm}
+              id="centimeters"
+              placeholder="Centimeters"
+              type="number"
+              onChange={onChange}
+              disabled={option != 0}
+            />
+          </div>
+          <div>
+            <label htmlFor="meters">Meter</label>
+            <input
+              value={m}
+              id="meters"
+              placeholder="Meters"
+              type="number"
+              onChange={onChange}
+              disabled={option != 1}
+            />
+          </div>
+          <div>
+            <label htmlFor="kilometers">Kilometer</label>
+            <input
+              value={km}
+              id="kilometers"
+              placeholder="Kilometers"
+              type="number"
+              onChange={onChange}
+              disabled={option != 2}
+            />
+          </div>
+          <div>
+            <label htmlFor="inches">Inch</label>
+            <input
+              value={inch}
+              id="inches"
+              placeholder="Inches"
+              type="number"
+              onChange={onChange}
+              disabled={option != 3}
+            />
+          </div>
+          <div>
+            <label htmlFor="feet">Feet</label>
+            <input
+              value={ft}
+              id="feet"
+              placeholder="Feet"
+              type="number"
+              onChange={onChange}
+              disabled={option != 4}
+            />
+          </div>
+          <div>
+            <label htmlFor="yards">Yard</label>
+            <input
+              value={yd}
+              id="yards"
+              placeholder="Yards"
+              type="number"
+              onChange={onChange}
+              disabled={option != 5}
+            />
+          </div>
+          <div>
+            <label htmlFor="miles">Mile</label>
+            <input
+              value={mile}
+              id="miles"
+              placeholder="Miles"
+              type="number"
+              onChange={onChange}
+              disabled={option != 6}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onSwitch}>Switch</button>
+        </div>
+      );
+    }
+
+    function App() {
+      const [index, setIndex] = React.useState("0");
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      };
+
+      return (
+        <div>
+          <h1>Converter</h1>
+          <select value={index} onChange={onSelect}>
+            <option value="0">Minutes&Hours</option>
+            <option value="1">Time</option>
+            <option value="2">Distance</option>
+          </select>
+          <hr />
+          {index === "0" ? <MinutesToHours /> : null}
+          {index === "1" ? <Time /> : null}
+          {index === "2" ? <Distance /> : null}
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

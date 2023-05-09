@@ -1,0 +1,18 @@
+.hidden {
+  display: none;
+}
+
+.align-left {
+  text-align: left;
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+
+.background {
+  background-size: cover;
+  background-image: url("image/0.jpg");
+}
